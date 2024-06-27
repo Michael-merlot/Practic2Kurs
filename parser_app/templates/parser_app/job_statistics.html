@@ -1,0 +1,29 @@
+<!-- parser_app/templates/parser_app/job_statistics.html -->
+
+{% extends "parser_app/base.html" %}
+
+{% block title %}Job Statistics{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Overview</h2>
+    <p>Total Jobs: {{ total_jobs }}</p>
+    <h2>Jobs by Company</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Total Jobs</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs_by_company %}
+                <tr>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

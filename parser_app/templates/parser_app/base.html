@@ -1,14 +1,64 @@
+<!-- parser_app/templates/parser_app/base.html -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>{% block title %}Job Parser{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'parser_app/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid #0069d9;
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+    <header>
+        <h1>Job Parser</h1>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
