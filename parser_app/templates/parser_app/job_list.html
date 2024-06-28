@@ -6,6 +6,12 @@
 
 {% block content %}
 <section>
+    <h2>Search for Jobs</h2>
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
     <h2>Available Jobs</h2>
     <table>
         <thead>
@@ -19,10 +25,10 @@
         <tbody>
             {% for job in jobs %}
                 <tr>
-                    <td class="job-title">{{ job.name }}</td>
-                    <td class="company">{{ job.employer.name }}</td>
-                    <td class="location">{{ job.area.name }}</td>
-                    <td class="description">{{ job.snippet.requirement }}</td>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.company }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>{{ job.description }}</td>
                 </tr>
             {% endfor %}
         </tbody>
