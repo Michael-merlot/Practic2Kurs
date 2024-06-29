@@ -7,8 +7,8 @@ import requests
 def fetch_jobs_from_hh(request):
     form = JobSearchForm(request.GET or None)
     jobs = []
-    max_results = 100  # Максимальное количество вакансий для извлечения
-    results_per_page = 50  # Количество вакансий на страницу
+    max_results = 100  # макс кол-во вакансий для извлечения
+    results_per_page = 50  # кол-во вакансий на страницу
 
     if form.is_valid():
         params = {
@@ -19,13 +19,13 @@ def fetch_jobs_from_hh(request):
 
         for page in range(0, max_results // results_per_page):
             params['page'] = page
-            print(f"Request parameters: {params}")  # Отладочное сообщение
+            print(f"Request parameters: {params}")
             response = requests.get('https://api.hh.ru/vacancies', params=params)
 
             if response.status_code == 200:
                 page_jobs = response.json().get('items', [])
-                print(f"Fetched {len(page_jobs)} jobs from API on page {page}")  # Отладочное сообщение
-                print(response.json())  # Печатаем весь ответ от API для проверки
+                print(f"Fetched {len(page_jobs)} jobs from API on page {page}")
+                print(response.json())
                 jobs.extend(page_jobs)
                 for job in page_jobs:
                     JobVacancy.objects.update_or_create(
@@ -39,7 +39,7 @@ def fetch_jobs_from_hh(request):
                         }
                     )
             else:
-                print(f"Error fetching data from API: {response.status_code}")  # Отладочное сообщение
+                print(f"Error fetching data from API: {response.status_code}")
 
     # Извлечение вакансий из базы данных с учётом фильтров
     db_jobs = JobVacancy.objects.all()
