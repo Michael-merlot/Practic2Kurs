@@ -1,4 +1,4 @@
-# parser_app/tests.py
+
 
 from django.test import TestCase
 from .models import JobVacancy

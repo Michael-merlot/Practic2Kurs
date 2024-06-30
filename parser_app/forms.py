@@ -1,5 +1,3 @@
-# parser_app/forms.py
-
 from django import forms
 
 class JobSearchForm(forms.Form):
